@@ -1,5 +1,3 @@
-import jdk.internal.util.xml.impl.Input;
-
 import java.util.InputMismatchException;
 import java.util.Scanner;
 import java.util.function.IntPredicate;
@@ -87,8 +85,26 @@ public class App {
     }
 
     //method returns true is the substring(sub) is in the string(str)
+//    private boolean isSubIn(String str, String sub) {
+//        return str.contains(sub);
+//    }
     private boolean isSubIn(String str, String sub) {
-        return str.contains(sub);
+        int subLen = sub.length();
+        int strLen = str.length();
+
+        if (subLen > strLen) return false;
+
+        for (int i = 0; i <= strLen - subLen; i++) {
+            StringBuilder sb = new StringBuilder();
+
+            for (int k = i; k < subLen + i; k++) {
+                sb.append(str.charAt(k));
+            }
+
+            if (sb.toString().equals(sub))
+                return true;
+        }
+        return false;
     }
 
     //method reverses a string
