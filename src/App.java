@@ -2,7 +2,7 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 import java.util.function.IntPredicate;
 import java.util.stream.Collectors;
-//changes
+//changes remote origin added
 
 public class App {
     //Scanner to get the input
