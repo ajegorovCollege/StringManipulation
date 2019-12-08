@@ -2,6 +2,7 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 import java.util.function.IntPredicate;
 import java.util.stream.Collectors;
+//new test
 
 public class App {
     //Scanner to get the input
