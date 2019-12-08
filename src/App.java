@@ -6,23 +6,32 @@ import java.util.stream.Collectors;
 public class App {
     //Scanner to get the input
     private final Scanner sc = new Scanner(System.in);
+    //inputs
+    private String input1;
+    private String input2;
 
     public static void main(String[] args) {
+        //start the application
         new App().start();
     }
 
-    private void start() {
-        String BLUE = "\033[0;34m";
-        String YELLOW = "\033[0;33m";
-        String CLEAR = "\033[0m";
+    private void setInputs() {
         //get inputs from the user
         //trim the whitespace
         System.out.println("Enter two strings to process:");
         System.out.print("String number 1: ");
-        String input1 = sc.nextLine().trim();
+        input1 = sc.nextLine().trim();
         System.out.print("String number 2: ");
-        String input2 = sc.nextLine().trim();
-        System.out.println();
+        input2 = sc.nextLine().trim();
+    }
+
+    private void start() {
+        //ANSI colors to highlight console outputs
+        String BLUE = "\033[0;34m";
+        String YELLOW = "\033[0;33m";
+        String CLEAR = "\033[0m";
+
+        setInputs();
         //if any of the inputs is empty throw an exception
         if (input1.isEmpty() || input2.isEmpty()) {
             throw new InputMismatchException("Input can't be empty.");
@@ -71,6 +80,10 @@ public class App {
                     input2 = reverse(changeCase(input2));
                     System.out.println("Changed string: " + BLUE + input2 + CLEAR);
                     break;
+                case 6:
+                    setInputs();
+                    System.out.println(BLUE + "Inputs have been changed!" + CLEAR);
+                    break;
                 case 1:
                     showMenu();
                     break;
@@ -118,38 +131,6 @@ public class App {
         }
         return new String(chars);
     }
-
-//    private String changeCase(String str) {
-//        IntPredicate isLower = c -> (c >= 97 && c <= 122);
-////        Predicate<Integer> isLetter = Character::isLetter;
-//
-//        Converter converter = n -> {
-////            if (Character.isLetter(n)) {
-////                return Character.toString((char) (r + (r >= 97 && r <= 122 ? -32 : 32)));
-////                return r >= 97 && r <= 122 ? (char) (r - 32) : (char) (r + 32);
-////            }
-//            int change = isLower.test(n) ? -32 : 32;
-//            return Character.toString(Character.isLetter(n) ? (char) (n + change) : (char) n);
-//        };
-//
-////        char[] chars = str.chars().mapToObj(ch -> {
-////            char r = (char) ch;
-////            int change = isLower.test(ch) ? -32 : 32;
-////
-////            return Character.toString(isLetter.test(r) ? (char) (r + change) : r);
-////
-////        }).collect(Collectors.joining()).toCharArray();
-//
-////        char[] chars = str.chars().mapToObj(converter::convert)
-////                .collect(Collectors.joining()).toCharArray();
-//
-////        return new String(chars);
-//
-//        //return a string
-//        return str.chars().mapToObj(converter::convert)
-//                .collect(Collectors.joining());
-//    }
-
     //method for changing case of the string
     private String changeCase(String str) {
         //this lambda accepts an int and returns a boolean
@@ -157,7 +138,7 @@ public class App {
 
         //this lambda returns a character in a form of a string
         Converter converter = n -> {
-            //check case and set change variable accordingly
+            //check case and set 'change' variable accordingly
             int change = isLower.test(n) ? -32 : 32;
             //check if a codePoint passed refers to a string
             //if it is add or subtract 32
@@ -165,23 +146,25 @@ public class App {
             return Character.toString(Character.isLetter(n) ? (char) (n + change) : (char) n);
         };
 
-        //convert the string str into lowercase or uppercase
-        // return a string
+        //convert a string str into lowercase or uppercase
+        //return a string
         return str.chars().mapToObj(converter::convert)
                 .collect(Collectors.joining());
     }
 
-    //method to show the menu
+    //method that shows the menu
     private void showMenu() {
+        System.out.println("------------------------");
         System.out.println("2.Search for a substring");
         System.out.println("3.Reverse a string");
         System.out.println("4.Change case");
         System.out.println("5.Reverse and change case");
-        System.out.println("1.Show menu");
+        System.out.println("6.Change inputs");
         System.out.println("0.Exit");
+        System.out.println("------------------------");
     }
 
-    //interface for the converter lambda
+    //interface for the 'converter' lambda
     interface Converter {
         String convert(int n);
     }
