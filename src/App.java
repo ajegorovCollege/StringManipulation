@@ -131,6 +131,7 @@ public class App {
         }
         return new String(chars);
     }
+
     //method for changing case of the string
     private String changeCase(String str) {
         //this lambda accepts an int and returns a boolean
@@ -138,12 +139,17 @@ public class App {
 
         //this lambda returns a character in a form of a string
         Converter converter = n -> {
-            //check case and set 'change' variable accordingly
-            int change = isLower.test(n) ? -32 : 32;
-            //check if a codePoint passed refers to a string
-            //if it is add or subtract 32
-            //if it is not just return a string representation of this character
-            return Character.toString(Character.isLetter(n) ? (char) (n + change) : (char) n);
+
+            int change = 0;
+            //check if n is a letter
+            if (Character.isLetter(n)) {
+                //assign a value to the 'change' variable depending on the output from
+                //isLower lambda expression
+                change = isLower.test(n) ? -32 : 32;
+            }
+            //return a character converted to a string
+            return Character.toString((char) (n + change));
+
         };
 
         //convert a string str into lowercase or uppercase
