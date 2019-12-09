@@ -3,6 +3,12 @@ import java.util.Scanner;
 import java.util.function.IntPredicate;
 import java.util.stream.Collectors;
 
+/**
+ * The program performs manipulations on two strings. Only the second string is changed and returned
+ * concatenated with the first string.
+ * @author Alexander
+ * @version 1.2
+ */
 public class App {
     //Scanner to get the input
     private final Scanner sc = new Scanner(System.in);
@@ -10,11 +16,18 @@ public class App {
     private String input1;
     private String input2;
 
+    /**
+     * Starts the application
+     * @param args console arguments
+     */
     public static void main(String[] args) {
         //start the application
         new App().start();
     }
 
+    /**
+     * Gets inputs from the user (first string and second string) and trims the white space.
+     */
     private void setInputs() {
         //get inputs from the user
         //trim the whitespace
@@ -25,6 +38,10 @@ public class App {
         input2 = sc.nextLine().trim();
     }
 
+    /**
+     * programs main method that display the menu and asks the user for the input
+     * it then calls the appropriate method from the switch statement
+     */
     private void start() {
         //ANSI colors to highlight console outputs
         String BLUE = "\033[0;34m";
@@ -101,6 +118,13 @@ public class App {
 //    private boolean isSubIn(String str, String sub) {
 //        return str.contains(sub);
 //    }
+
+    /**
+     * Looking for the substring in the string
+     * @param str a string that is being searched
+     * @param sub a substring that is being searched for
+     * @return is a searched substring is found in the string provided, the method returns true
+     */
     private boolean isSubIn(String str, String sub) {
         int subLen = sub.length();
         int strLen = str.length();
@@ -121,6 +145,12 @@ public class App {
     }
 
     //method reverses a string
+
+    /**
+     * Reverses the string
+     * @param str a string to reverse
+     * @return a reversed string
+     */
     private String reverse(String str) {
         char[] chars = str.toCharArray();
 
@@ -132,7 +162,11 @@ public class App {
         return new String(chars);
     }
 
-    //method for changing case of the string
+    /**
+     * Changes case of the string
+     * @param str a string to change case to
+     * @return a modified string
+     */
     private String changeCase(String str) {
         //this lambda accepts an int and returns a boolean
         IntPredicate isLower = c -> (c >= 97 && c <= 122);
@@ -158,7 +192,9 @@ public class App {
                 .collect(Collectors.joining());
     }
 
-    //method that shows the menu
+    /**
+     * Displays menu
+     */
     private void showMenu() {
         System.out.println("------------------------");
         System.out.println("2.Search for a substring");
@@ -170,7 +206,9 @@ public class App {
         System.out.println("------------------------");
     }
 
-    //interface for the 'converter' lambda
+    /**
+     * Interface for the 'converter' lambda expression
+     */
     interface Converter {
         String convert(int n);
     }
