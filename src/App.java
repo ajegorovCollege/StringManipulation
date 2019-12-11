@@ -180,12 +180,11 @@ public class App {
             //check if n is a letter
             if (Character.isLetter(n)) {
                 //assign a value to the 'change' variable depending on the output from
-                //isLower lambda expression
+                //isLower lambda expression(returns boolean)
                 change = isLower.test(n) ? -32 : 32;
             }
             //return a character converted to a string
             return Character.toString((char) (n + change));
-
         };
 
         //convert a string str into lowercase or uppercase
