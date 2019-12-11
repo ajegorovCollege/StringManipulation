@@ -7,13 +7,21 @@ import java.util.stream.Collectors;
  * The program performs manipulations on two strings. Only the second string is changed and returned
  * concatenated with the first string.
  * @author Alexander
- * @version 1.2
+ * @version 1.1
  */
 public class App {
-    //Scanner to get the input
+    /**
+     * Gets input from the console
+     */
     private final Scanner sc = new Scanner(System.in);
     //inputs
+    /**
+     * First input string from the user
+     */
     private String input1;
+    /**
+     * Second input string from the user (modifiable)
+     */
     private String input2;
 
     /**
@@ -39,8 +47,8 @@ public class App {
     }
 
     /**
-     * programs main method that display the menu and asks the user for the input
-     * it then calls the appropriate method from the switch statement
+     * programs main method that displays the menu and asks the user for the input.
+     * It then calls the appropriate method from the switch statement
      */
     private void start() {
         //ANSI colors to highlight console outputs
@@ -114,16 +122,11 @@ public class App {
         System.out.println("The result is: " + BLUE + input1 + " " + input2 + CLEAR);
     }
 
-    //method returns true is the substring(sub) is in the string(str)
-//    private boolean isSubIn(String str, String sub) {
-//        return str.contains(sub);
-//    }
-
     /**
-     * Looking for the substring in the string
+     * Looks for the substring in the provided string
      * @param str a string that is being searched
      * @param sub a substring that is being searched for
-     * @return is a searched substring is found in the string provided, the method returns true
+     * @return if a searched substring is found in the string provided, the method returns true and false otherwise
      */
     private boolean isSubIn(String str, String sub) {
         int subLen = sub.length();
@@ -143,8 +146,6 @@ public class App {
         }
         return false;
     }
-
-    //method reverses a string
 
     /**
      * Reverses the string
