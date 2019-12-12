@@ -14,7 +14,6 @@ public class App {
      * Gets input from the console
      */
     private final Scanner sc = new Scanner(System.in);
-    //inputs
     /**
      * First input string from the user
      */
@@ -23,7 +22,6 @@ public class App {
      * Second input string from the user (modifiable)
      */
     private String input2;
-
     /**
      * Starts the application
      * @param args console arguments
@@ -120,7 +118,7 @@ public class App {
             }
 
         }
-        System.out.println("The result is: " + BLUE + input1 + " " + input2 + CLEAR);
+        System.out.println("The result is: " + BLUE + input1  + input2 + CLEAR);
     }
 
     /**
@@ -173,7 +171,7 @@ public class App {
         //this lambda accepts an int and returns a boolean
         IntPredicate isLower = c -> (c >= 97 && c <= 122);
 
-        //this lambda returns a character in a form of a string
+        //this lambda accepts an int and returns a character in a form of a string
         Converter converter = n -> {
 
             int change = 0;
