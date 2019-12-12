@@ -113,7 +113,7 @@ public class App {
                     showMenu();
                     break;
                 case 0:
-                    //finish looping is user inputs zero
+                    //finish looping if user inputs zero
                     break options;
                 default:
                     System.out.println(YELLOW + "<< check your input >>" + CLEAR);
